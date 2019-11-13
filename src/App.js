@@ -81,21 +81,6 @@ class App extends Component {
   }
 
   onSubmit = () => {
-    this.setState({imageUrl: this.state.input})
-    app.models
-      .predict(Clarifai.FACE_DETECT_MODEL, 'https://samples.clarifai.com/metro-north.jpg')
-      .then(response => {
-        console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
-  enterPress = (event) => {
-    let code = event.keyCode || event.which;
-    if (code === 13) {
-      console.log('working shiet')
       this.setState({imageUrl: this.state.input})
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, 'https://samples.clarifai.com/metro-north.jpg')
@@ -105,7 +90,6 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
-    }
   }
 
   render() {
