@@ -92,13 +92,20 @@ class App extends Component {
       });
   }
 
+  onEnterKey = (event) => {
+    let code = event.keyCode || event.which;
+    if (code === 13) {
+      this.onSubmit();
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <Particles className='particles' params={particlesOptions}/>
         <Navigation />
         <Rank />
-        <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit}/>
+        <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} onEnterKey={this.onEnterKey} />
         <FaceRecognition imageUrl={this.state.imageUrl} />
       </div>
     );
