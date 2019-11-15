@@ -3,9 +3,9 @@ import './App.css';
 
 import Particles from 'react-particles-js';
 
-import Navigation from './components/Navigation/Navigation';
+// import Navigation from './components/Navigation/Navigation';
 import ImageLinkForm from './components/ImageLInkForm/ImageLInkForm';
-import Rank from './components/Rank/Rank';
+// import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 
 // API key injection
@@ -72,8 +72,27 @@ class App extends Component {
     super();
     this.state = {
       input: '',
-      imageUrl: ''
+      imageUrl: '',
+      box: {}
     }
+  }
+
+  calculateFaceLocation = (data) => {
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById('inputImage');
+    const width = Number(image.width);
+    const height = Number(image.height);
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
+    }
+  }
+
+  displayFaceBox = (box) => {
+    console.log(box);
+    this.setState({box: box});
   }
 
   onInputChange = (event) => {
@@ -83,13 +102,11 @@ class App extends Component {
   onSubmit = () => {
       this.setState({imageUrl: this.state.input})
     app.models
-      .predict(Clarifai.FACE_DETECT_MODEL, 'https://samples.clarifai.com/metro-north.jpg')
-      .then(response => {
-        console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .predict(
+        Clarifai.FACE_DETECT_MODEL,
+        this.state.input)
+      .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
+      .catch(err => console.log(err));
   }
 
   onEnterKey = (event) => {
@@ -103,10 +120,10 @@ class App extends Component {
     return (
       <div className="App">
         <Particles className='particles' params={particlesOptions}/>
-        <Navigation />
-        <Rank />
+        {/* <Navigation />
+        <Rank /> */}
         <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} onEnterKey={this.onEnterKey} />
-        <FaceRecognition imageUrl={this.state.imageUrl} />
+        <FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box}/>
       </div>
     );
   }
