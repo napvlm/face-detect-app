@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: 'Courier', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #2980B9;
+  background: -webkit-gradient(linear, left top, right top, from(#7f7fd5), color-stop(#86a8e7), to(#91eae4));
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+  background-size: 400%;
+  -webkit-animation: bgMove 23s ease infinite;
+  animation: bgMove 23s ease infinite;
+}
+
+@-webkit-keyframes bgMove {
+  0% {
+    background-position: 93% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 93% 0%;
+  }
+}
+
+@keyframes bgMove {
+  0% {
+    background-position: 93% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 93% 0%;
+  }
+}
+
+.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+input {
+  outline: none;
+}
+
+img {
+  border-radius: 10px;
+}
+/*# sourceMappingURL=index.css.map */

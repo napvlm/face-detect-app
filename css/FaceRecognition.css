@@ -1,0 +1,15 @@
+.bounding-box {
+  position: absolute;
+  -webkit-box-shadow: 0 0 0 3px #149df2 inset;
+          box-shadow: 0 0 0 3px #149df2 inset;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+/*# sourceMappingURL=FaceRecognition.css.map */

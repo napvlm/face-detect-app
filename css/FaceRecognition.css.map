@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,QAAQ,EAAE,QAAQ;EAClB,UAAU,EAAE,uBAAuB;EACnC,OAAO,EAAE,WAAW;EACpB,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,IAAI;EACnB,SAAS,EAAE,IAAI;EACf,aAAa,EAAE,MAAM;EACrB,eAAe,EAAE,MAAM;EACvB,MAAM,EAAE,OAAO;CAChB",
+    "sources": [
+        "../src/components/FaceRecognition/FaceRecognition.scss"
+    ],
+    "names": [],
+    "file": "FaceRecognition.css"
+}
